@@ -190,6 +190,23 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
         col =  "rgba(24, 154, 203, {})" # blue CRG logo
         return col.format(str(opacity))
 
+    for table in tree.findall(".//table"):
+        add_class(table, "table table-striped table-condensed")
+
+    for blockquote in tree.findall(".//blockquote"):
+        add_class(blockquote, "bs-callout bs-callout-warning")
+
+    for h1 in tree.findall(".//h1"):
+        h1.set('style',"color: {}".format(color(1)))
+        #add_class(h1, "text-left text-info warning")
+
+    for h2 in tree.findall(".//h2"):
+        h2.set('style',"border-bottom: 1px solid #cccccc; color: {};".format(color(1)))
+        #add_class(h2, "text-info")
+
+    for h3 in tree.findall(".//h3"):
+        #h3.set('style',"background-color: #DBD0C8;")
+        h3.set('style',"background: {};".format(color(0.1)))
 def embed_images(tree, embed=True, params=None):
     import base64
     for image in tree.findall(".//img"):
