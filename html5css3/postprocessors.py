@@ -183,7 +183,6 @@ def impressjs(tree, embed=True, params=None):
 def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
     head = tree[0]
 
-    head.append(css(join_path("thirdparty", "bootstrap.css"), embed))
     def color(opacity=1):
         """ Return main color """
         # col = "rgba(183, 123, 1, 1)" # brown CRG logo
@@ -207,6 +206,16 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
     for h3 in tree.findall(".//h3"):
         #h3.set('style',"background-color: #DBD0C8;")
         h3.set('style',"background: {};".format(color(0.1)))
+
+    cssfile = "bootstrap-%s.css" % version
+
+    head.append(css(join_path("thirdparty", cssfile), embed))
+    if theme:
+        theme_cssfile = "bootstrap-%s-theme.css" % version
+        head.append(css(join_path("thirdparty", theme_cssfile), embed))
+    head.append(css("rst2html5.css", embed))
+    head.append(css("docs.css", embed))
+
 def embed_images(tree, embed=True, params=None):
     import base64
     for image in tree.findall(".//img"):
