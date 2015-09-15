@@ -184,6 +184,11 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
     head = tree[0]
 
     head.append(css(join_path("thirdparty", "bootstrap.css"), embed))
+    def color(opacity=1):
+        """ Return main color """
+        # col = "rgba(183, 123, 1, 1)" # brown CRG logo
+        col =  "rgba(24, 154, 203, {})" # blue CRG logo
+        return col.format(str(opacity))
 
 def embed_images(tree, embed=True, params=None):
     import base64
