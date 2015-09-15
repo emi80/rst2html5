@@ -180,7 +180,7 @@ def impressjs(tree, embed=True, params=None):
 
     body.append(html.Script("impress().init();"))
 
-def bootstrap_css(tree, embed=True, params=None):
+def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
     head = tree[0]
 
     head.append(css(join_path("thirdparty", "bootstrap.css"), embed))
