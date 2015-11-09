@@ -234,7 +234,7 @@ class Writer(writers.Writer):
                     else:
                         params[key] = val
 
-                processor(tree, embed, params)
+                processor(tree, embed, **params)
 
         # tell the visitor to append the default stylesheets
         # we call it after the postprocessors to make sure it haves precedence
