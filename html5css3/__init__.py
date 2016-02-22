@@ -815,7 +815,7 @@ class HTMLTranslator(nodes.NodeVisitor):
         attrs = {}
 
         for attr, value in node.attributes.items():
-            if attr.startswith("data-") or attr in {'title', 'class', 'id'}:
+            if attr.startswith("data-") or attr in set(['title', 'class', 'id']):
                 attrs[attr] = value
 
         return attrs
