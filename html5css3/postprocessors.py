@@ -180,7 +180,7 @@ def impressjs(tree, embed=True, params=None):
 
     body.append(html.Script("impress().init();"))
 
-def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
+def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False, callout='warning'):
     head = tree[0]
 
     def color(opacity=1):
@@ -193,14 +193,14 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False):
         add_class(table, "table table-striped table-condensed")
 
     for blockquote in tree.findall(".//blockquote"):
-        add_class(blockquote, "bs-callout bs-callout-warning")
+        add_class(blockquote, "bs-callout bs-callout-{0}".format(callout))
 
     for h1 in tree.findall(".//h1"):
         h1.set('style',"color: {}".format(color(1)))
         #add_class(h1, "text-left text-info warning")
 
     for h2 in tree.findall(".//h2"):
-        h2.set('style',"border-bottom: 1px solid #cccccc; color: {};".format(color(1)))
+        h2.set('style',"border-bottom: 1px solid #cccccc; color: {0};".format(color(1)))
         #add_class(h2, "text-info")
 
     for h3 in tree.findall(".//h3"):
