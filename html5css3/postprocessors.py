@@ -186,7 +186,7 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False, 
     def color(opacity=1):
         """ Return main color """
         # col = "rgba(183, 123, 1, 1)" # brown CRG logo
-        col =  "rgba(24, 154, 203, {})" # blue CRG logo
+        col =  "rgba(24, 154, 203, {0})" # blue CRG logo
         return col.format(str(opacity))
 
     for table in tree.findall(".//table"):
@@ -196,7 +196,7 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False, 
         add_class(blockquote, "bs-callout bs-callout-{0}".format(callout))
 
     for h1 in tree.findall(".//h1"):
-        h1.set('style',"color: {}".format(color(1)))
+        h1.set('style',"color: {0}".format(color(1)))
         #add_class(h1, "text-left text-info warning")
 
     for h2 in tree.findall(".//h2"):
@@ -205,7 +205,7 @@ def bootstrap_css(tree, embed=False, params=None, version="2.1.1", theme=False, 
 
     for h3 in tree.findall(".//h3"):
         #h3.set('style',"background-color: #DBD0C8;")
-        h3.set('style',"background: {};".format(color(0.1)))
+        h3.set('style',"background: {0};".format(color(0.1)))
 
     cssfile = "bootstrap-%s.css" % version
 
